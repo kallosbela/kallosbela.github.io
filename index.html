@@ -1,56 +1,337 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Egy szuper oldal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bemutatkozás – Béla</title>
+  <style>
+    :root {
+      --bg: #f5f5f5;
+      --fg: #111111;
+      --accent: #0070f3;
+      --muted: #555555;
+      --radius: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    header .logo {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      margin-left: 16px;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #dddddd;
+      margin-bottom: 16px;
+      color: var(--muted);
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin-right: 8px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 8px 18px;
+      font-size: 0.9rem;
+      border: 1px solid #dddddd;
+      background: white;
+      text-decoration: none;
+      color: var(--fg);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: var(--fg);
+      color: white;
+      border-color: var(--fg);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+
+    .note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 18px 18px 16px;
+      border: 1px solid #e1e1e1;
+      margin-bottom: 16px;
+    }
+
+    .card h2 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      font-size: 0.8rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid #e1e1e1;
+      color: var(--muted);
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .project {
+      margin-bottom: 10px;
+    }
+
+    .project-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .project-link {
+      font-size: 0.8rem;
+      text-decoration: none;
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+  </style>
 </head>
-
 <body>
-    <ul>
-        <li>
-            <a href="/">Home</a>
-        </li>
-        <li>
-            <a href="/pages/products.html">Prodacts</a>
-        </li>
-        <li>
-            <a href="/pages/orders.html">Orders</a>
-        </li>
-        <li>
-            <a href="about.html">About</a>
-        </li>
-    </ul>
-    <h1>Fantastic Burger</h1>
-    <ul>
-        <li>Meat lover</li>
-        <ul>
-            <li>Pork</li>
-            <li>Chicken</li>
-            <li>Turkey</li>
-        </ul>
-        <li>Vegetarian</li>
-        <li>Piedone</li>
-    </ul>
+  <div class="container">
+    <header>
+      <div class="logo">BÉLA</div>
+      <nav>
+        <a href="#rolam">Rólam</a>
+        <a href="#projektek">Projektek</a>
+        <a href="#kapcsolat">Kapcsolat</a>
+      </nav>
+    </header>
 
-    <h2>Additions</h2>
-    <ol>
-        <li>Tomato</li>
-        <li>Apple</li>
-        <li>Papper</li>
-        <li>Hot chili sauce</li>
-    </ol>
+    <main>
+      <!-- BAL OSZLOP – FŐ SZÖVEG -->
+      <section>
+        <div class="pill">
+          <span class="pill-dot"></span>
+          Elérhető új projektekre
+        </div>
 
-    <img src="images/burger.jpg" alt="tasty burger" width="100">
+        <h1 class="hero-title">Szia, Béla vagyok, szoftverfejlesztő.</h1>
+        <p class="hero-subtitle">
+          Tiszta, átlátható kódot írok – elsősorban webes és backend projektekhez. 
+          Szeretem az egyszerű, működő megoldásokat felesleges bonyolítás nélkül.
+        </p>
 
-    <a href="https://index.hu">Más lap</a>
-    <a href="/pages/orders.html">Orders</a>
-    <a target="blank" href="https://index.hu">
-        <img src="images/burger.jpg" alt="tasty burger" width="100">
-    </a>
+        <div class="buttons">
+          <a class="btn btn-primary" href="#kapcsolat">Lépjünk kapcsolatba</a>
+          <a class="btn" href="#projektek">Nézd meg a projektjeimet →</a>
+        </div>
 
+        <p class="note">
+          Jelenleg nyitott vagyok részmunkaidős, remote vagy freelance lehetőségekre.
+        </p>
+
+        <section id="rolam" style="margin-top:32px;">
+          <div class="section-title">Rólam</div>
+          <p style="font-size:0.9rem; color:var(--muted); max-width:520px;">
+            Több éves tapasztalatom van szoftverfejlesztésben. 
+            Szívesen dolgozom olyan projekteken, ahol fontos a minőségi kód, 
+            az átlátható architektúra és az őszinte kommunikáció.
+          </p>
+        </section>
+      </section>
+
+      <!-- JOBB OSZLOP – KÁRTYÁK -->
+      <section>
+        <div class="card">
+          <h2>Fő területeim</h2>
+          <p>Elsősorban ilyen típusú feladatokkal foglalkozom:</p>
+          <div class="tag-list">
+            <span class="tag">Webfejlesztés</span>
+            <span class="tag">REST API-k</span>
+            <span class="tag">Backend logika</span>
+            <span class="tag">Adatbázis-kezelés</span>
+            <span class="tag">Clean code</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Technológiák</h2>
+          <p>Az alábbi technológiákkal dolgozom a legszívesebben:</p>
+          <div class="tag-list">
+            <span class="tag">JavaScript / TypeScript</span>
+            <span class="tag">HTML / CSS</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Express / NestJS</span>
+            <span class="tag">SQL / PostgreSQL</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+
+        <div class="card" id="projektek">
+          <h2>Projektek</h2>
+          <div class="project">
+            <div class="project-title">Egyszerű feladatkezelő alkalmazás</div>
+            <p class="project-desc">
+              Full-stack webalkalmazás, ahol feladatokat lehet létrehozni, kategorizálni
+              és szűrni. Reszponzív felület, REST API backend.
+            </p>
+            <!-- Itt cseréld ki a linket a sajátodra -->
+            <a class="project-link" href="#" target="_blank" rel="noopener noreferrer">
+              (Demó / GitHub link)
+            </a>
+          </div>
+
+          <div class="project">
+            <div class="project-title">API integrációs mini szolgáltatás</div>
+            <p class="project-desc">
+              Kis backend szolgáltatás külső API-k összekötésére és adatok
+              előfeldolgozására. Logolás, hibakezelés és egységtesztek.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" id="kapcsolat">
+          <h2>Kapcsolat</h2>
+          <p>Írj bátran, ha lenne egy ötleted vagy projekted, amiben segíthetek.</p>
+          <p style="font-size:0.9rem; margin-top:10px;">
+            📧 E-mail: <a href="mailto:pelda.email@valami.hu">pelda.email@valami.hu</a><br />
+            💼 LinkedIn / GitHub: helye itt – cseréld ki a saját profilodra.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Béla – minimalista portfólió oldal.
+    </footer>
+  </div>
+
+  <script>
+    // Automatikus év frissítés a láblécben
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
-
 </html>
